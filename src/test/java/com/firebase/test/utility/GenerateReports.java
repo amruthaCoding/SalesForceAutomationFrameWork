@@ -56,11 +56,10 @@ public class GenerateReports {
 	public void logTestPassed(String testcaseName) {
 		logger.log(Status.PASS, MarkupHelper.createLabel(testcaseName + " is pass Test", ExtentColor.GREEN));
 	}
-	
+
 	public void logTestScreenShot(String testcaseName, String screenShotPath) {
 
-		logger.log(Status.PASS, MarkupHelper
-				.createLabel(testcaseName + "See the Screenshot below", ExtentColor.GREEN));
+		logger.log(Status.PASS, MarkupHelper.createLabel(testcaseName + "See the Screenshot below", ExtentColor.GREEN));
 		try {
 
 			logger.log(Status.PASS, (Markup) logger.addScreenCaptureFromPath(screenShotPath));
@@ -70,8 +69,6 @@ public class GenerateReports {
 		}
 
 	}
-	
-	
 
 	public void logTestAssertionFailed(String testcaseName, String screenShotPath) {
 

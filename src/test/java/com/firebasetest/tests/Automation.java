@@ -17,15 +17,11 @@ import org.testng.annotations.Test;
 import com.firebase.basetest.test.Base;
 import com.firebase.test.utility.CommonUtilities;
 
-//import com.fasterxml.jackson.databind.deser.Deserializers.Base;
-
-//import net.bytebuddy.implementation.bind.annotation.Morph.Binder.DefaultMethodLocator.Implicit;
-
 public class Automation extends Base {
 
 	@Test(priority = 1)
 	public static void loginErrorMessageTestCase1() {
-		
+
 		String expected = "Please enter your password.";
 
 		CommonUtilities CU = new CommonUtilities();
@@ -36,17 +32,15 @@ public class Automation extends Base {
 		waitUntilVisibilityof("username", "UserName");
 		enterText("password", "", "Password");
 		clickElement("Login", "Login");
-		
-		String actual = retrieveText("error", "password invalid");
 
+		String actual = retrieveText("error", "password invalid");
 
 		if (!expected.equals(actual)) {
 			String screenshotPath = Base.captureWindowScreenshot();
 			report.logTestAssertionFailed(
-					"Assertion failed. " + "Actual Text : " + actual + " Expected tex  : " + expected,
-					screenshotPath);
+					"Assertion failed. " + "Actual Text : " + actual + " Expected tex  : " + expected, screenshotPath);
 		} else {
-			report.logTestPassed("Assertion passed");			
+			report.logTestPassed("Assertion passed");
 		}
 
 	}
@@ -89,7 +83,6 @@ public class Automation extends Base {
 		Properties applicationProperties = CU.loadFile("Data");
 		enterText("username", CU.getApplicationProperty("valid_username", applicationProperties), "UserName");
 		clickElement("forgot_password_link", "Forgot Paasword");
-		// waitUntilVisibilityof("header", "Forgot Your password header");
 
 	}
 
@@ -105,7 +98,7 @@ public class Automation extends Base {
 			clickElement("Login", "Login");
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
@@ -160,7 +153,7 @@ public class Automation extends Base {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		WebElement file = driver.findElement(By.id("publisherAttachContentPost"));
@@ -251,6 +244,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"00N4x00000Wf5Es\"]/option[2]", "Customer Priority High");
 		clickElement("//*[@id=\"bottomButtonRow\"]/input[1]", "Save");
 	}
+
 	@Test(priority = 12)
 	public static void createNewViewtTestCase11() {
 		loginToSalesForceTestCase2();
@@ -261,6 +255,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"editPage\"]/div[3]/table/tbody/tr/td[2]/input[1]", "save");
 
 	}
+
 	@Test(priority = 13)
 	public static void editviewtTestCase12() {
 
@@ -271,7 +266,7 @@ public class Automation extends Base {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		clickElement("//*[@id=\"filter_element\"]/div/span/span[2]/a[1]", "edit");
@@ -282,6 +277,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"editPage\"]/div[3]/table/tbody/tr/td[2]/input[1]", "save");
 
 	}
+
 	@Test(priority = 14)
 
 	public static void mergeAccountstTestCase13() {
@@ -293,12 +289,13 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"stageForm\"]/div/div[2]/div[5]/div/input[1]", "Next Button");
 		clickElement("//*[@id=\"stageForm\"]/div/div[2]/div[5]/div/input[2]", "merge button Step 2");
 		Alert al = driver.switchTo().alert();
-		// click on OK to accept with accept()
+
 		al.accept();
 		driver.close();
 		System.out.println("popup is closed successfully");
 
 	}
+
 	@Test(priority = 15)
 	public static void createAccountReportTestCase14() {
 
@@ -308,7 +305,7 @@ public class Automation extends Base {
 
 		clickElement("//a[contains(text(),'Accounts with')]", "Account with last Activity >30");
 		clickElement("//input[@name='dateColumn' ]", "Date coloumn field");
-		// input[@name='dateColumn' ]
+
 		clickElement("//div[contains(text(),'Created Date')]", "created date");
 		System.out.println("created date is clicked");
 		clickElement(
@@ -329,6 +326,7 @@ public class Automation extends Base {
 		System.out.println("Test 14 passed");
 
 	}
+
 	@Test(priority = 16)
 	public static void opportunitiesDropdownTestCase15() {
 		loginToSalesForceTestCase2();
@@ -341,6 +339,7 @@ public class Automation extends Base {
 		System.out.println("Test case 15 is complete");
 
 	}
+
 	@Test(priority = 17)
 	public static void createanewOptyTestCase16() {
 		loginToSalesForceTestCase2();
@@ -359,6 +358,7 @@ public class Automation extends Base {
 		System.out.println("test case 16 passed");
 
 	}
+
 	@Test(priority = 18)
 	public static void testOpportunityPipelineReportyTestCase17() {
 		loginToSalesForceTestCase2();
@@ -366,12 +366,14 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"toolsContent\"]/tbody/tr/td[1]/div/div[1]/div[1]/ul/li[1]/a", "oppurtunities pipelink");
 
 	}
+
 	@Test(priority = 19)
 	public static void testStuckOpportunitiesReportTestCase18() {
 		loginToSalesForceTestCase2();
 		clickElement("Opportunity_Tab", "oppurtunities");
 		clickElement("//*[@id=\"toolsContent\"]/tbody/tr/td[1]/div/div[1]/div[1]/ul/li[2]/a", "Stuck Oppurtunities");
 	}
+
 	@Test(priority = 20)
 	public static void testQuarterlySummaryReportTestCase19() {
 		loginToSalesForceTestCase2();
@@ -382,6 +384,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"lead_summary\"]/table/tbody/tr[3]/td/input", "Run Report");
 
 	}
+
 	@Test(priority = 21)
 	public static void checkLeadsTabLinkTestCase20() {
 		loginToSalesForceTestCase2();
@@ -389,6 +392,7 @@ public class Automation extends Base {
 		closeunimportantPoPupWindows("//*[@id=\"tryLexDialogX\"]", "popup");
 
 	}
+
 	@Test(priority = 22)
 	public static void validateViewDropdownListContentsTestcase21() {
 		loginToSalesForceTestCase2();
@@ -396,6 +400,7 @@ public class Automation extends Base {
 		closeunimportantPoPupWindows("//*[@id=\"tryLexDialogX\"]", "popup");
 		clickElement("fcf", "Lead Drop Down Menu");
 	}
+
 	@Test(priority = 23)
 	public static void functionalityOfTheGoButtonTestcase22() {
 		loginToSalesForceTestCase2();
@@ -410,6 +415,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"filter_element\"]/div/span/span[1]/input", "Go");
 
 	}
+
 	@Test(priority = 24)
 	public static void listItemTodaysLeadsWorkTestcase23() {
 		loginToSalesForceTestCase2();
@@ -420,6 +426,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"filter_element\"]/div/span/span[1]/input", "Go");
 
 	}
+
 	@Test(priority = 25)
 	public static void checkNewButtonOnLeadsHomeTestcase24() {
 		loginToSalesForceTestCase2();
@@ -431,6 +438,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"bottomButtonRow\"]/input[1]", "save");
 
 	}
+
 	@Test(priority = 26)
 	public static void createNewContactTestcase25() {
 		loginToSalesForceTestCase2();
@@ -441,6 +449,7 @@ public class Automation extends Base {
 		enterText("//*[@id=\"con4\"]", "mani", "Account Name");
 		clickElement("//*[@id=\"bottomButtonRow\"]/input[1]", "save");
 	}
+
 	@Test(priority = 27)
 	public static void createNewViewintheContactPageTestCase26() {
 		loginToSalesForceTestCase2();
@@ -452,6 +461,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"editPage\"]/div[3]/table/tbody/tr/td[2]/input[1]", "save");
 
 	}
+
 	@Test(priority = 28)
 	public static void checkRecentlyCreatedContactInTheContactPageTestCase27() {
 		loginToSalesForceTestCase2();
@@ -459,6 +469,7 @@ public class Automation extends Base {
 		closeunimportantPoPupWindows("//*[@id=\"tryLexDialogX\"]", "popup");
 		clickElement("//*[@id=\"hotlist_mode\"]/option[1]", "Recently Created");
 	}
+
 	@Test(priority = 29)
 	public static void checkMyContactsViewInTheContactPageTestCase28() {
 		loginToSalesForceTestCase2();
@@ -468,6 +479,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"filter_element\"]/div/span/span[1]/input", "Go");
 
 	}
+
 	@Test(priority = 30)
 	public static void viewContactInTheContactPageTestCase29() {
 		loginToSalesForceTestCase2();
@@ -475,6 +487,7 @@ public class Automation extends Base {
 		closeunimportantPoPupWindows("//*[@id=\"tryLexDialogX\"]", "popup");
 		clickElement("//*[@id=\"bodyCell\"]/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a", "Karri");
 	}
+
 	@Test(priority = 31)
 	public static void viewContactInTheContactPageTestCase30() {
 		loginToSalesForceTestCase2();
@@ -485,6 +498,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"editPage\"]/div[3]/table/tbody/tr/td[2]/input[1]", "Save");
 
 	}
+
 	@Test(priority = 32)
 	public static void checkTheCancelButtonWorksFineInCreateNewViewTestCase31() {
 		loginToSalesForceTestCase2();
@@ -497,6 +511,7 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"editPage\"]/div[3]/table/tbody/tr/td[2]/input[2]", "Cancel");
 
 	}
+
 	@Test(priority = 33)
 
 	public static void checkTheSaveAndNewButtonWorksInNewContactPageTestCase32() {
@@ -508,18 +523,15 @@ public class Automation extends Base {
 		enterText("con4", "Global Media", "Account Name");
 		clickElement("//*[@id=\"bottomButtonRow\"]/input[2]", "Save & New");
 		String screenshotPath = Base.captureWindowScreenshot();
-		report.logTestScreenShot("Screenshot",screenshotPath);
-		
-		
+		report.logTestScreenShot("Screenshot", screenshotPath);
 
 	}
+
 	@Test(priority = 34)
 	public static void verifyIfTheFirstnameAndLastnameOfTheLoggedInUserIsDisplayedTestCase33() {
 		loginToSalesForceTestCase2();
 		String expectedText = "Amrutha Anantatamukal";
-		// String Expected
-		// =getTextOfWebElement("//*[@id=\"ptBody\"]/div/div[2]/span[1]/h1/a",
-		// "expected");
+
 		clickElement("//*[@id=\"home_Tab\"]/a", "home");
 		closeunimportantPoPupWindows("//*[@id=\"tryLexDialogX\"]", "popup");
 		String expectedUrl = createWebElement("//*[@id=\"ptBody\"]/div/div[2]/span[1]/h1/a").getAttribute("href");
@@ -528,9 +540,10 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"ptBody\"]/div/div[2]/span[1]/h1/a", "userlink");
 		String expectedTitle = "User: Amrutha Anantatamukal ~ Salesforce - Developer Edition";
 		String screenshotPath = Base.captureWindowScreenshot();
-		report.logTestScreenShot("Screenshot",screenshotPath);
-		
+		report.logTestScreenShot("Screenshot", screenshotPath);
+
 	}
+
 	@Test(priority = 35)
 	public static void verifytheEditedLastnameIsUpdatedAtVariousPlacesTestCase34() {
 		loginToSalesForceTestCase2();
@@ -542,16 +555,12 @@ public class Automation extends Base {
 		try {
 			Thread.sleep(6000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		clickElement("//*[@id=\"chatterTab\"]/div[2]/div[2]/div[1]/h3/div/div/a/img", "EditProfile");
 
 		driver.switchTo().frame("contactInfoContentId");
-		/*
-		 * try { Thread.sleep(6000); } catch (InterruptedException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
+
 		WebElement about = driver.findElement(By.partialLinkText("About"));
 		about.click();
 		WebElement lastname = driver.findElement(By.xpath("//*[@id=\"lastName\"]"));
@@ -559,11 +568,10 @@ public class Automation extends Base {
 		lastname.sendKeys("Abcd");
 		clickElement("//*[@id=\"TabPanel\"]/div/div[2]/form/div/input[1]", "saveAll button");
 		String screenshotPath = Base.captureWindowScreenshot();
-		report.logTestScreenShot("Screenshot",screenshotPath);
-		
-		// driver.close();
+		report.logTestScreenShot("Screenshot", screenshotPath);
 
 	}
+
 	@Test(priority = 36)
 
 	public static void verifyTheTabCustomizationTestcase35() {
@@ -577,10 +585,10 @@ public class Automation extends Base {
 		clickElement("//*[@id=\"userNav-menuItems\"]/a[5]", "LogOut");
 		loginToSalesForceTestCase2();
 		String screenshotPath = Base.captureWindowScreenshot();
-		report.logTestScreenShot("Screenshot",screenshotPath);
-		
+		report.logTestScreenShot("Screenshot", screenshotPath);
 
 	}
+
 	@Test(priority = 37)
 	public static void blockingAnEventInTheCalendertestCase36() {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -601,7 +609,7 @@ public class Automation extends Base {
 				driver.switchTo().window(child_window);
 
 				clickElement("//a[contains(text(),'Other')]", "others");
-				// driver.close();
+
 			}
 		}
 		// switch to the parent window
@@ -611,12 +619,12 @@ public class Automation extends Base {
 		clickElement("EndDateTime_time", "end date time");
 		clickElement("timePickerItem_42", "end time 9 pm");
 		clickElement("//*[@id=\"bottomButtonRow\"]/input[1]", "save");
-		
+
 		String screenshotPath = Base.captureWindowScreenshot();
-		report.logTestScreenShot("Screenshot",screenshotPath);
-		
+		report.logTestScreenShot("Screenshot", screenshotPath);
 
 	}
+
 	@Test(priority = 38)
 
 	public static void blockingAnEventInTheCalenderWithWeeklyRecurranceTestCase37() {
@@ -637,7 +645,7 @@ public class Automation extends Base {
 				driver.switchTo().window(child_window);
 
 				clickElement("//a[contains(text(),'Other')]", "others");
-				// driver.close();
+
 			}
 		}
 		// switch to the parent window
@@ -655,10 +663,9 @@ public class Automation extends Base {
 		System.out.println("Test going to open the monthly view now");
 		clickElement("//*[@id=\"bCalDiv\"]/div/div[2]/span[2]/a[3]/img", "monthly view ");
 		System.out.println("Test blockingAnEventInTheCalenderWithWeeklyRecurranceTestCase37 is complete");
-		
+
 		String screenshotPath = Base.captureWindowScreenshot();
-		report.logTestScreenShot("Screenshot",screenshotPath);
-		
+		report.logTestScreenShot("Screenshot", screenshotPath);
 
 	}
 
